@@ -3,6 +3,7 @@ import { CartService } from "../../services/cart.service";
 import { Product } from "../../models/product.model";
 import { Subscription } from "rxjs";
 import { StoreService } from "../../services/store.service";
+import { Category } from "../../models/category.model";
 
 const ROWS_HEIGHT: { [id: number]: number } = { 1: 400, 3: 335, 4: 350 };
 
@@ -13,7 +14,7 @@ const ROWS_HEIGHT: { [id: number]: number } = { 1: 400, 3: 335, 4: 350 };
 export class HomeComponent implements OnInit, OnDestroy {
   cols = 3;
   rowHeight = ROWS_HEIGHT[this.cols];
-  category: string | undefined;
+  category: Category | undefined;
   products: Array<Product> | undefined;
   sort = "desc";
   count = "12";
@@ -40,11 +41,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.cols = colNum;
   }
 
-  onShowCategory(newCategory: string): void {
+  onShowCategory(newCategory: Category): void {
     this.category = newCategory;
     this.rowHeight = ROWS_HEIGHT[this.cols];
     this.getProducts();
   }
+
   onAddToCart(product: Product): void {
     this.cartService.addToCart({
       product: product.image,

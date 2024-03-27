@@ -60,7 +60,7 @@ import { HttpClientModule } from "@angular/common/http";
     StoreService,
     CartService,
     provideAnimationsAsync(),
-    { provide: DEFAULT_CURRENCY_CODE, useValue: "EUR" },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: "DKK " },
   ],
   bootstrap: [AppComponent],
 })
